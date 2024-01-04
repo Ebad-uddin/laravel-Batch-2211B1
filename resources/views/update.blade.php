@@ -122,15 +122,15 @@ form .signup-link a:hover{
   <body>
     <div class="container">
       @php
-          // print_r($errors);
+        //   dd($user_data);
       @endphp
       <div class="wrapper">
         <div class="title"><span>Registration Form</span></div>
-        <form action="{{url('/')}}/register" method="POST">
+        <form action="{{url('/')}}/std/update/{{$user_data->id}}" method="POST">
             @csrf
           <div class="row">
             <i class="fas fa-user"></i>
-            <input type="text" placeholder="Email or Phone" name="email" value="{{old('email')}}">
+            <input type="text" placeholder="Email or Phone" name="email" value="{{$user_data->email}}" >
             <span style="color:red;margin:20px 0">
               @error('email')
                   {{$message}}
@@ -139,7 +139,7 @@ form .signup-link a:hover{
           </div>
           <div class="row">
             <i class="fas fa-lock"></i>
-            <input type="text" placeholder="User Name" name="name" value="{{old('name')}}">
+            <input type="text" placeholder="User Name" name="name"  value="{{$user_data->name}}" >
             <span style="color:red;margin:20px 0">
               @error('name')
                   {{$message}}
@@ -148,7 +148,7 @@ form .signup-link a:hover{
           </div>
           <div class="row">
             <i class="fas fa-lock"></i>
-            <input type="password" placeholder="Password" name="password" value="{{old('password')}}" >
+            <input type="password" placeholder="Password" name="password"  value="{{$user_data->password}}" >
             <span style="color:red;margin:20px 0">
               @error('password')
                   {{$message}}
